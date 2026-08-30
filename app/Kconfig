@@ -10,7 +10,10 @@ choice
     default BLINK_SLEEP_1000MS
 
 config BLINK_SLEEP_250MS
-    bool "250ms (fast)"
+    bool "250ms (faster)"
+
+config BLINK_SLEEP_500MS
+    bool "500ms (fast)"
 
 config BLINK_SLEEP_1000MS
     bool "1s (medium)"
