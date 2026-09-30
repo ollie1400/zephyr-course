@@ -1,5 +1,6 @@
 {
     "C_Cpp.default.compileCommands": [
         "${workspaceFolder}/build/compile_commands.json"
-    ]
+    ],
+    "cmake.sourceDirectory": "E:/Code/IOMICO/zephyr-course/app"
 }

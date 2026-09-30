@@ -17,12 +17,18 @@ int main(void)
 
     if (gpio_pin_configure_dt(&led, GPIO_OUTPUT_ACTIVE) < 0) return 0;
 
-    while (1) {
-        if (gpio_pin_toggle_dt(&led) < 0) return 0;
+    while (1)
+    {
+#if IS_ENABLED(CONFIG_LED_SUBSYSTEM)
+            if (gpio_pin_toggle_dt(&led) < 0) return 0;
 
-        led_state = !led_state;
-        LOG_INF("LED state: %s", led_state ? "ON" : "OFF");
-        k_msleep(CONFIG_BLINK_SLEEP_TIME_MS);
+            led_state = !led_state;
+            if (IS_ENABLED(CONFIG_LED_DEBUG))
+            {
+                LOG_INF("LED state: %s", led_state ? "ON" : "OFF");
+            }
+            k_msleep(CONFIG_BLINK_SLEEP_TIME_MS);
+#endif
     }
     return 0;
 }
